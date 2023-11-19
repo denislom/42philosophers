@@ -6,11 +6,11 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2023/11/20 00:05:51 by dlom             ###   ########.fr        #
+#    Updated: 2023/11/20 00:24:50 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	philosophers
+NAME =	philo
 SRCS =	philosophers.c \
 
 
