@@ -6,7 +6,7 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2023/11/18 20:57:24 by dlom             ###   ########.fr        #
+#    Updated: 2023/11/19 23:37:09 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS =	big_sort_utils.c \
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -g
+#CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 all: lib $(NAME)
 
