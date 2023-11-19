@@ -6,28 +6,17 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2023/11/19 23:37:09 by dlom             ###   ########.fr        #
+#    Updated: 2023/11/20 00:05:51 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	push_swap
-SRCS =	big_sort_utils.c \
-		big_sort.c \
-		checks.c \
-		free_functions.c \
-		ft_atol.c \
-		ft_list_functions.c \
-		ft_list_functions2.c \
-		operations_push.c \
-		operations_reverse_rotate.c \
-		operations_rotate.c \
-		operations_swap.c \
-		push_swap.c \
-		small_sort.c
+NAME =	philosophers
+SRCS =	philosophers.c \
+
 
 OBJS = $(SRCS:.c=.o)
 
-CC = cc
+CC = cc -pthread
 #CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 all: lib $(NAME)

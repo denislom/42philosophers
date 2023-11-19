@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/19 23:36:06 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/20 00:04:53 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,16 @@ https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 
 */
 
+void *routine()
+{
+	ft_printf("Test from threads\n");
+}
+
 int	main(int argc, char **argv)
 {
+	pthread_t	t1;
 
+	pthread_create(&t1, NULL, &routine, NULL);
+	pthread_join(t1, NULL); // to wait for the thread, as wait for process
 	return (0);
 }
