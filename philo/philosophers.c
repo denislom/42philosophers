@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/20 00:17:06 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/20 00:44:39 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,31 @@ https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 
 */
 
-void *routine()
+void	*routine()
+{
+	ft_printf("Test from threads\n");
+	sleep(3);
+	ft_printf("Ending thread.\n");
+}
+
+int	main(int argc, char **argv)
+{
+	pthread_t	t1;
+	pthread_t	t2;
+
+	if (pthread_create(&t1, NULL, &routine, NULL) != 0)
+		return (1);
+	if (pthread_create(&t2, NULL, &routine, NULL) != 0)
+		return (2);
+	if (pthread_join(t1, NULL) != 0)
+		return (3);
+	if (pthread_join(t2, NULL) != 0)
+		return (4);
+	return (0);
+}
+
+/* 
+void	*routine()
 {
 	ft_printf("Test from threads\n");
 	sleep(3);
@@ -40,8 +64,11 @@ int	main(int argc, char **argv)
 	if (pthread_create(&t1, NULL, &routine, NULL) != 0)
 		return (1);
 	if (pthread_create(&t2, NULL, &routine, NULL) != 0)
-		return (1);
-	pthread_join(t1, NULL); // to wait for the thread, as wait for process
-	pthread_join(t2, NULL);
+		return (2);
+	if (pthread_join(t1, NULL) != 0)  // to wait for the thread, as wait for process
+		return (3);
+	if (pthread_join(t2, NULL) != 0)
+		return (4);
 	return (0);
-}
+} 
+*/
