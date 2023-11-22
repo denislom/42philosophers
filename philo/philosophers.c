@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/22 02:11:48 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/22 02:23:43 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@ https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 
 int	main(int argc, char **argv)
 {
+	t_table	table;
+
 	if (5 == argc || 6 == argc)
 	{
-		return (0);
+		// errors checking, filling table
+		// parse_input(&table, argv);
+		//creat the stuff
+		//data_init(&table);
+		//dinner_start(&table);
+		//treat the leaks -> pilos full | 1 philo died
+		//clean(&table);
 	}
 	else
 		error_exit("Wrong input\n"
