@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/22 02:01:01 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/22 02:11:48 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	else
-		ft_printf(G"Correct is: ./philo 5 800 200 [5]\n"RST);
-		error_exit("Wrong input\n");
+		error_exit("Wrong input\n"
+			G"Correct is ./philo 5 800 200 [5]"RST);
 	return (0);
 }
 
