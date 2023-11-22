@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:04:19 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/22 01:06:31 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/22 01:55:55 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	error_exit(const char *error)
 {
-	ft_printf("Error: %s\n", error);
+	ft_printf(RED"Error: %s\n"RST, error);
 	exit(EXIT_FAILURE);
 }

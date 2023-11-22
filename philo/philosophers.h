@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/21 01:54:09 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/22 01:53:14 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@
 # include <unistd.h>
 # include <pthread.h>
 # include "./libft/libft.h"
+
+/* 
+ANSI Escape Sequences for bold text colors
+-> to make printf cool
+ */
+
+# define RST	"\033[0m"
+# define RED	"\033[1;31m"
+# define G		"\033[1;32m"
+# define Y		"\033[1;33m"
+# define B		"\033[1;34m"
+# define M		"\033[1;35m"
+# define C		"\033[1;36m"
+# define W		"\033[1;37m"
 
 /* 
 ./philo 5 800 200 200 [5]
@@ -81,5 +95,8 @@ struct s_table
 	t_fork	*forks;
 	t_philo	*philos;
 };
+
+//error_handling.c
+void	error_exit(const char *error);
 
 #endif
