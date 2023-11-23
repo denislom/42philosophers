@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/23 01:20:27 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/24 00:26:11 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,29 @@ atol "alfa to long"
 static - we use it only inside this source file
 */
 
+static inline bool	is_space(char c)
+{
+	return ((c >= '\t' && c <= '\r') || c == ' ')
+}
+
+static inline bool	is_digit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 static const char *valid_input(const char	*str)
 {
 	int	len;
+
+	len = 0;
+	while (is_space(*str))
+		++str;
+	if (*str == '+')
+		++str;
+	else if (*str == '-')
+		error_exit("Only positive values, please.");
+	if ()
+	
 	
 }
 
