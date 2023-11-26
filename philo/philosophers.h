@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/26 22:44:25 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/26 23:19:35 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,11 @@ void	error_exit(const char *error);
 
 //parse.c
 void	parse_input(t_table	*table, char **argv);
+
+//init.c
+void	data_init(t_table *table);
+
+//safe_func.c
+void	*safe_malloc(size_t bytes);
 
 #endif

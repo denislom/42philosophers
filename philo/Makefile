@@ -6,14 +6,16 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2023/11/26 22:44:54 by dlom             ###   ########.fr        #
+#    Updated: 2023/11/26 23:17:21 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	philo
 SRCS =	philosophers.c \
 		error_handling.c \
-		parse.c
+		parse.c \
+		init.c \
+		safe_func.c
 
 
 OBJS = $(SRCS:.c=.o)
