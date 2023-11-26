@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/24 00:26:11 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:46:48 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static inline bool	is_digit(char c)
 static const char *valid_input(const char	*str)
 {
 	int	len;
+	const char	*number;
 
 	len = 0;
 	while (is_space(*str))
@@ -52,9 +53,14 @@ static const char *valid_input(const char	*str)
 		++str;
 	else if (*str == '-')
 		error_exit("Only positive values, please.");
-	if ()
-	
-	
+	if (!is_digit(*str))
+		error_exit("The input is not correct digit.");
+	number = str;
+	while (is_digit(*str++))
+		++len;
+	if (len > 10)
+		error_exit("The value is too bigger than INT_MAX.")
+	return (number);
 }
 
 static long	ft_atol(const char *str)
@@ -63,6 +69,11 @@ static long	ft_atol(const char *str)
 
 	nbr = 0;
 	str = valid_input(str);
+	while (is_digit(*str))
+		nbr = (nbr * 10) + (*str++ - 48);
+	if (nbr > INT_MAX)
+		error_exit("The value is too bigger than INT_MAX.");
+	return (nbr);
 }
 
 void	parse_input(t_table	*table, char **argv)
