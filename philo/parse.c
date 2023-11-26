@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/26 16:46:48 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/26 22:44:36 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static - we use it only inside this source file
 
 static inline bool	is_space(char c)
 {
-	return ((c >= '\t' && c <= '\r') || c == ' ')
+	return ((c >= '\t' && c <= '\r') || c == ' ');
 }
 
 static inline bool	is_digit(char c)
@@ -59,7 +59,7 @@ static const char *valid_input(const char	*str)
 	while (is_digit(*str++))
 		++len;
 	if (len > 10)
-		error_exit("The value is too bigger than INT_MAX.")
+		error_exit("The value is too bigger than INT_MAX.");
 	return (number);
 }
 
@@ -76,7 +76,33 @@ static long	ft_atol(const char *str)
 	return (nbr);
 }
 
+/*
+struct s_table
+{
+	long	nbr_philo;
+	long	time_to_die;
+	long	time_to_eat;
+	long	time_to_sleep;
+	long	meals_limit;
+	long	simulation_start;
+	bool	simulation_end;
+	t_fork	*forks;
+	t_philo	*philos;
+};
+*/
+
 void	parse_input(t_table	*table, char **argv)
 {
-
+	table->nbr_philo = ft_atol(argv[1]);
+	table->time_to_die = ft_atol(argv[2]) * 1e3;
+	table->time_to_eat = ft_atol(argv[3]) * 1e3;
+	table->time_to_sleep = ft_atol(argv[4]) * 1e3;
+	if (table->time_to_die < 60e3
+		|| table->time_to_eat < 60e3
+		|| table->time_to_sleep < 60e3)
+		error_exit("Timestamps must be major than 60ms.");
+	if (argv[5])
+		table->meals_limit = ft_atol(argv[5]);
+	else
+		table->meals_limit = -1;
 }
