@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/22 02:23:43 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/26 22:50:27 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if (5 == argc || 6 == argc)
 	{
 		// errors checking, filling table
-		// parse_input(&table, argv);
+		parse_input(&table, argv);
 		//creat the stuff
 		//data_init(&table);
 		//dinner_start(&table);

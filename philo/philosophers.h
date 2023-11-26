@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/22 01:53:14 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/26 22:44:25 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <limits.h>
 # include "./libft/libft.h"
 
 /* 
@@ -98,5 +99,8 @@ struct s_table
 
 //error_handling.c
 void	error_exit(const char *error);
+
+//parse.c
+void	parse_input(t_table	*table, char **argv);
 
 #endif
