@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/26 23:19:35 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/28 00:05:19 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,19 @@ ANSI Escape Sequences for bold text colors
 # define M		"\033[1;35m"
 # define C		"\033[1;36m"
 # define W		"\033[1;37m"
+
+//OPCODE: mutex and thread functions
+
+typedef enum	e_opcode
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH,
+}	t_opcode;
 
 /* 
 ./philo 5 800 200 200 [5]
@@ -108,5 +121,6 @@ void	data_init(t_table *table);
 
 //safe_func.c
 void	*safe_malloc(size_t bytes);
+void	safe_mutex(t_mtx *mutex, t_opcode opcode);
 
 #endif
