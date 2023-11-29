@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/28 00:05:19 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/28 01:17:40 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <pthread.h>
 # include <limits.h>
 # include "./libft/libft.h"
+# include <errno.h>
 
 /* 
 ANSI Escape Sequences for bold text colors

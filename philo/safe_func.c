@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:17:37 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/27 23:48:53 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/29 23:59:11 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,48 @@ void	*safe_malloc(size_t bytes)
 	return (result);
 }
 
+static void	handle_mutex_error(int status, t_opcode opcode)
+{
+	if (0 == status)
+		return ;
+	if (EINVAL == status && (LOCK == opcode || UNLOCK == opcode))
+		error_exit("The value specified by mutex is not valid.");
+	else if (EINVAL == status && INIT == opcode)
+		error_exit("The value specified by attr is invalid.");
+	else if (EDEADLK == status)
+		error_exit("A deadlock would occur if the thread blocked waiting for mutex.");
+	else if (EPERM == status)
+		error_exit("The current thread does not hold a lock on mutex.");
+	else if (ENOMEM == status)
+		error_exit("The process cannot allocate enough memory to create another mutex.");
+	else if (EBUSY == status)
+		error_exit("Mutex is locked."); 
+}
+
 void	safe_mutex(t_mtx *mutex, t_opcode opcode)
 {
 	if (LOCK == opcode)
-		pthread_mutex_lock(mutex);
+		handle_mutex_error(pthread_mutex_lock(mutex), opcode);
+	else if (UNLOCK == opcode)
+		handle_mutex_error(pthread_mutex_unlock(mutex), opcode);
+	else if (INIT == opcode)
+		handle_mutex_error(pthread_mutex_init(mutex, NULL), opcode);
+	else if (DESTROY == opcode)
+		handle_mutex_error(pthread_mutex_destroy(mutex), opcode);
+	else
+		error_exit("Wrong opcode for mutex.");
 }
+
+/* void	safe_mutex(t_mtx *mutex, t_opcode opcode)
+{
+	if (LOCK == opcode)
+		pthread_mutex_lock(mutex);
+	else if (UNLOCK == opcode)
+		pthread_mutex_unlock(mutex);
+	else if (INIT == opcode)
+		pthread_mutex_init(mutex, NULL);
+	else if (DESTROY == opcode)
+		pthread_mutex_destroy(mutex);
+	else
+		error_exit("Wrong opcode for mutex.");
+} */
