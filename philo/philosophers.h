@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/28 01:17:40 by dlom             ###   ########.fr       */
+/*   Updated: 2023/11/30 21:22:03 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ void	data_init(t_table *table);
 //safe_func.c
 void	*safe_malloc(size_t bytes);
 void	safe_mutex(t_mtx *mutex, t_opcode opcode);
+static	safe_thread(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode);
 
 #endif
