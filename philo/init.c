@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/01 00:20:26 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/17 22:08:54 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,25 @@ typedef struct s_fork
 }	t_fork;
 */
 
+static void	philo_init(t_table *table)
+{
+	int	i;
+
+	
+}
+
 void	data_init(t_table *table)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	table->simulation_end = false;
 	table->philos = safe_malloc(sizeof(t_philo) * table->nbr_philo);
 	table->forks = safe_malloc(sizeof(t_fork) * table->nbr_philo);
 	while (++i < table->nbr_philo)
 	{
 		safe_mutex(&table->forks[i].fork, INIT);
+		table->forks[i].fork_id = i;
 	}
-	
+	philo_init(table);
 }
