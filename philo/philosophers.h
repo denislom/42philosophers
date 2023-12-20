@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/21 00:15:52 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/21 00:17:43 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <errno.h>
+# include <sys/time.h>
 
 /* 
 ANSI Escape Sequences for bold text colors
