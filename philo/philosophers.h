@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/21 00:08:02 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/21 00:15:52 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ ANSI Escape Sequences for bold text colors
 
 //OPCODE: mutex and thread functions
 
-typedef enum	e_opcode
+typedef enum e_opcode
 {
 	LOCK,
 	UNLOCK,
@@ -123,6 +123,7 @@ void	data_init(t_table *table);
 //safe_func.c
 void	*safe_malloc(size_t bytes);
 void	safe_mutex(t_mtx *mutex, t_opcode opcode);
-void	safe_thread(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode);
+void	safe_thread(pthread_t *thread, void *(*foo)(void *),
+			void *data, t_opcode opcode);
 
 #endif
