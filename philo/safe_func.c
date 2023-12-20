@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:17:37 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/30 21:26:46 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/21 00:07:36 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	handle_thread_error(int status, t_opcode opcode)
 			"thread specifies the calling thread");
 }
 
-static	safe_thread(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode)
+void	safe_thread(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode)
 {
 	if (CREATE == opcode)
 		handle_thread_error(pthread_create(thread, NULL, foo, data), opcode);
