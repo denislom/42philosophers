@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/20 22:56:33 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/21 00:23:24 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_fork
 
 static void	philo_init(t_table *table)
 {
-	int	i;
+	int		i;
 	t_philo	*philo;
 
 	i = -1;
@@ -58,7 +58,6 @@ static void	philo_init(t_table *table)
 		philo = table->philos + i;
 		philo->id = i + i;
 	}
-	
 }
 
 void	data_init(t_table *table)
