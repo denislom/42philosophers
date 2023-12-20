@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/30 21:22:03 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/20 23:46:20 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <stdbool.h>
 # include <limits.h>
-# include "./libft/libft.h"
 # include <errno.h>
 
 /* 

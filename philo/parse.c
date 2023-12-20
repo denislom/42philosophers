@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/26 22:44:36 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/20 23:32:16 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ static inline bool	is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
+/*
+	static const char *valid_input(const char	*str);
+	static: accessible only within this source file (internal linkage)
+	RETURNs pointer to a constant character
+	1) ignores the spaces in the begining (chars \t to \r)
+	2) ignores + sign
+	3) if is negatives -> error_exit
+	4) checks if the string consists only of the digits
+	5) checks if the len of str  <= 10 (INT_MAX)
+*/
+
 static const char *valid_input(const char	*str)
 {
 	int	len;
@@ -63,6 +74,13 @@ static const char *valid_input(const char	*str)
 	return (number);
 }
 
+/*
+	static long	ft_atol(const char *str);
+	static: accessible only within this source file (internal linkage)
+	converts ASCII (string) to long
+	checks if number is bigger than INT_MAX (for ex. if len of str is 10)
+*/
+
 static long	ft_atol(const char *str)
 {
 	long	nbr;
@@ -77,6 +95,10 @@ static long	ft_atol(const char *str)
 }
 
 /*
+	void	parse_input(t_table	*table, char **argv);
+	- Parses command-line arguments and puts those 
+	  values in t_table structure.
+	  
 struct s_table
 {
 	long	nbr_philo;
