@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/05 22:04:55 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/06 00:01:11 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ struct s_table
 	long	meals_limit;
 	long	simulation_start;
 	bool	simulation_end;
+	bool	threads_ready;
 	t_fork	*forks;
 	t_philo	*philos;
 };
