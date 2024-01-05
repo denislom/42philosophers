@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/21 00:23:24 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:53:57 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ typedef struct s_fork
 }	t_fork;
 */
 
+static void	appoint_forks(t_philo *philo, t_fork *forks, int philo_pos)
+{
+	int	philo_number;
+
+	philo_number = philo->table->nbr_philo;
+	philo->right_first_fork = &forks[(philo_pos + 1) % philo_number];
+	philo->left_second_fork = &forks[philo_pos];
+	if (philo->id % 2)
+	{
+		philo->right_first_fork = &forks[philo_pos];
+		philo->left_second_fork = &forks[(philo_pos + 1) % philo_number];
+	}
+}
+
 static void	philo_init(t_table *table)
 {
 	int		i;
@@ -57,6 +71,10 @@ static void	philo_init(t_table *table)
 	{
 		philo = table->philos + i;
 		philo->id = i + i;
+		philo->table = table;
+		philo->estoy_lleno = false;
+		philo->meals_eaten = 0;
+		appoint_forks(philo, table->forks, i);
 	}
 }
 

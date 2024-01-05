@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:17:37 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/21 00:07:36 by dlom             ###   ########.fr       */
+/*   Updated: 2023/12/21 00:41:42 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ static void	handle_mutex_error(int status, t_opcode opcode)
 	else if (EBUSY == status)
 		error_exit("Mutex is locked."); 
 }
+
+/*
+	init, destroy, lock, unlock
+*/
 
 void	safe_mutex(t_mtx *mutex, t_opcode opcode)
 {

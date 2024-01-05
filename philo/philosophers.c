@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2023/11/26 22:50:27 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:50:26 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		// errors checking, filling table
 		parse_input(&table, argv);
 		//creat the stuff
-		//data_init(&table);
+		data_init(&table);
 		//dinner_start(&table);
 		//treat the leaks -> pilos full | 1 philo died
 		//clean(&table);

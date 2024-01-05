@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/21 00:17:43 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:04:55 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ typedef struct s_philo
 	long		meals_eaten;
 	bool		estoy_lleno;
 	long		last_meal_time;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
+	t_fork		*right_first_fork;
+	t_fork		*left_second_fork;
 	pthread_t	thread_id;
 	t_table		*table;
 }	t_philo;
