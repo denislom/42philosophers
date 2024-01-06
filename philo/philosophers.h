@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/06 15:22:28 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/06 16:03:37 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,18 @@ void	safe_mutex(t_mtx *mutex, t_opcode opcode);
 void	safe_thread(pthread_t *thread, void *(*foo)(void *),
 			void *data, t_opcode opcode);
 
+//dine.c
+void	*dining(void *data);
+void	start_dining(t_table *table);
+
 //setandget.c
 void	set_bool(t_mtx	*mutex, bool *dest, bool value);
 bool	get_bool(t_mtx *mutex, bool *value);
 long	get_long(t_mtx *mutex, long *value);
 void	set_long(t_mtx *mutex, long *dest, long value);
 bool	simulation_finished(t_table *table);
+
+//mon_and_synchro_utils.c 
+void	wait_threads(t_table *table);
 
 #endif

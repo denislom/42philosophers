@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/06 15:29:24 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/06 16:03:52 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*dining(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	// wait_threads(philo->table);
+	wait_threads(philo->table);
 }
 
 void	start_dining(t_table *table)
@@ -39,4 +39,5 @@ void	start_dining(t_table *table)
 				&table->philos[i], CREATE);
 		}
 	}
+	set_bool(&table->table_mutex, &table->threads_ready, true);
 }
