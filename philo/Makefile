@@ -6,7 +6,7 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2023/12/20 23:44:31 by dlom             ###   ########.fr        #
+#    Updated: 2024/01/06 15:29:22 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ SRCS =	philosophers.c \
 		error_handling.c \
 		parse.c \
 		init.c \
-		safe_func.c
+		safe_func.c \
+		setandget.c \
+		dine.c
 
 
 OBJS = $(SRCS:.c=.o)
