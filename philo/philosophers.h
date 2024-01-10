@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/06 16:03:37 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/06 16:35:53 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ typedef enum e_opcode
 	JOIN,
 	DETACH,
 }	t_opcode;
+
+//get_time
+typedef enum e_time
+{
+	SECOND,
+	MILISECOND,
+	MICROSECOND,
+}	t_time;
 
 /* 
 ./philo 5 800 200 200 [5]
@@ -142,5 +150,8 @@ bool	simulation_finished(t_table *table);
 
 //mon_and_synchro_utils.c 
 void	wait_threads(t_table *table);
+
+//time_utils.c
+long	gettime(t_time	time);
 
 #endif

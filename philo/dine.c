@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/06 16:03:52 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/11 00:03:28 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ void	*dining(void *data)
 
 	philo = (t_philo *)data;
 	wait_threads(philo->table);
+	while (!simulation_finished(philo->table))
+	{
+		if (philo->estoy_lleno)
+			break;
+		// eat(philo);
+		// sleep(philo);
+		// think(philo);
+	}
+	
 }
 
 void	start_dining(t_table *table)
@@ -26,7 +35,7 @@ void	start_dining(t_table *table)
 
 	i = -1;
 	if (0 == table->meals_limit)
-		return (0);
+		return ;
 	else if (1 == table->nbr_philo)
 	{
 		/* code */
@@ -39,5 +48,10 @@ void	start_dining(t_table *table)
 				&table->philos[i], CREATE);
 		}
 	}
+	table->simulation_start = gettime(MILISECOND);
 	set_bool(&table->table_mutex, &table->threads_ready, true);
+	i = -1;
+	while (++i < table->nbr_philo)
+		safe_thread(&table->philos[i].thread_id, NULL, NULL, JOIN);
+	
 }
