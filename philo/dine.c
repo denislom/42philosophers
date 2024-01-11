@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/11 00:03:28 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/11 20:30:17 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*dining(void *data)
 		if (philo->estoy_lleno)
 			break;
 		// eat(philo);
-		// sleep(philo);
+		// my_sleep(philo);
 		// think(philo);
 	}
 	

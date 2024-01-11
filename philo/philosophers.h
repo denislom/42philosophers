@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/06 16:35:53 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/11 20:44:13 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ void	wait_threads(t_table *table);
 
 //time_utils.c
 long	gettime(t_time	time);
+void	my_usleep(long	microsec, t_table	*table);
 
 #endif
