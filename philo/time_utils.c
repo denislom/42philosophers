@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:20:35 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/11 20:43:52 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/11 22:30:28 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,22 @@ long	gettime(t_time	time)
 void	my_usleep(long	microsec, t_table	*table)
 {
 	long	start;
+	long	passed;
+	long	remain;
 
 	start = gettime(MICROSECOND);
-	
-
+	while (gettime(MICROSECOND) - start < microsec)
+	{
+		if (simulation_finished(table))
+			break ;
+		passed = gettime(MICROSECOND) - start;
+		remain = microsec - passed;
+		if (remain > 1e3)
+			usleep(microsec / 2);
+		else
+		{
+			while (gettime(MICROSECOND) - start < microsec)
+				;
+		}
+	}
 }
