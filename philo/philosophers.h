@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/11 20:44:13 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/13 00:20:54 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ ANSI Escape Sequences for bold text colors
 # define M		"\033[1;35m"
 # define C		"\033[1;36m"
 # define W		"\033[1;37m"
+
+typedef enum e_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DIED,
+}	t_philo_status;
 
 //OPCODE: mutex and thread functions
 
@@ -120,6 +130,7 @@ struct s_table
 	t_fork	*forks;
 	t_philo	*philos;
 	t_mtx	table_mutex;
+	t_mtx	write_mutex;
 };
 
 //error_handling.c

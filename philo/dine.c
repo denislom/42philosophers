@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/11 20:30:17 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/12 23:42:55 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*dining(void *data)
 	while (!simulation_finished(philo->table))
 	{
 		if (philo->estoy_lleno)
-			break;
+			break ;
 		// eat(philo);
 		// my_sleep(philo);
 		// think(philo);
