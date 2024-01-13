@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/13 00:20:54 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/13 21:32:19 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,39 @@
 # include <limits.h>
 # include <errno.h>
 # include <sys/time.h>
+
+/* 
+The pthread library provides the following main features and functions:
+
+Thread Creation and Termination:
+    pthread_create: Creates a new thread.
+    pthread_exit: Terminates the calling thread.
+
+Thread Synchronization:
+    pthread_join: Waits for a specific thread to finish.
+    pthread_detach: Detaches a thread, allowing it to run independently.
+    pthread_mutex_lock and pthread_mutex_unlock: Provides mutual exclusion 
+	to shared resources.
+
+Condition Variables:
+    pthread_cond_wait and pthread_cond_signal: Allows threads to wait for 
+	a condition to be met.
+
+Thread-Specific Data:
+    pthread_key_create and pthread_setspecific: Enables the creation and
+	use of thread-specific data.
+
+Thread Attributes:
+    pthread_attr_init and pthread_attr_set: Specifies various attributes
+	when creating threads.
+
+Scheduling:
+    pthread_yield: Yields the processor to other threads.
+
+Mutex Types:
+    pthread_mutex_init with different types: Provides various types of 
+	mutexes, such as normal, error-checking, and recursive.
+ */
 
 /* 
 ANSI Escape Sequences for bold text colors
@@ -165,5 +198,8 @@ void	wait_threads(t_table *table);
 //time_utils.c
 long	gettime(t_time	time);
 void	my_usleep(long	microsec, t_table	*table);
+
+//output.c
+void	output_shell(t_philo_status status, t_philo *philo, bool debug);
 
 #endif
