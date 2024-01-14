@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/13 21:32:19 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/14 02:45:48 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ ANSI Escape Sequences for bold text colors
 # define M		"\033[1;35m"
 # define C		"\033[1;36m"
 # define W		"\033[1;37m"
+
+#define DEBUG_MODE	0
 
 typedef enum e_status
 {
