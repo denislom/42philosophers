@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/17 21:13:20 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 00:39:00 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	think_function(t_philo *philo)
 }
 
 
-void	*dining(void *data)
+static void	*dining(void *data)
 {
 	t_philo	*philo;
 
@@ -50,13 +50,11 @@ void	*dining(void *data)
 	{
 		if (philo->estoy_lleno)
 			break ;
-		// eat_function(philo);
-		// my_sleep(philo);
+		eat_function(philo);
 		output_shell(SLEEPING, philo, DEBUG_MODE);
 		my_usleep(philo->table->time_to_sleep, philo->table);
-		// think(philo);
+		think_function(philo);
 	}
-	
 }
 
 void	start_dining(t_table *table)
