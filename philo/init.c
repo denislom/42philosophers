@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/06 15:33:13 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/17 20:51:21 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	philo_init(t_table *table)
 		philo->table = table;
 		philo->estoy_lleno = false;
 		philo->meals_eaten = 0;
+		safe_mutex(&philo->philo_mtx, INIT);
 		appoint_forks(philo, table->forks, i);
 	}
 }

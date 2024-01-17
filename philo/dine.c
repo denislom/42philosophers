@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/14 03:09:29 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/17 20:59:30 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,14 @@ static void	eat_function(t_philo *philo)
 	output_shell(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	safe_mutex(&philo->left_second_fork->fork, LOCK);
 	output_shell(TAKE_SECOND_FORK, philo, DEBUG_MODE);
-
-
+	set_long(&philo->philo_mtx, &philo->last_meal_time, gettime(MILISECOND));
+	philo->meals_eaten = philo->meals_eaten + 1;
+	output_shell(EATING, philo, DEBUG_MODE);
+	my_usleep(philo->table->time_to_eat, philo->table);
+	if (philo->table->meals_limit > 0 && philo->meals_eaten == philo->table->meals_limit)
+		set_bool(&philo->philo_mtx, &philo->estoy_lleno, true);
+	safe_mutex(&philo->right_first_fork->fork, UNLOCK);
+	safe_mutex(&philo->left_second_fork->fork, UNLOCK);
 }
 
 void	*dining(void *data)
