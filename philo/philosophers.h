@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/14 02:45:48 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/17 20:51:25 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_philo
 	t_fork		*left_second_fork;
 	pthread_t	thread_id;
 	t_table		*table;
+	t_mtx		philo_mtx;
 }	t_philo;
 
 // ./philo 5 800 200 200 [5]

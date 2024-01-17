@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:03:09 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/17 20:59:30 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/17 21:13:20 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static void	eat_function(t_philo *philo)
 	safe_mutex(&philo->right_first_fork->fork, UNLOCK);
 	safe_mutex(&philo->left_second_fork->fork, UNLOCK);
 }
+
+static void	think_function(t_philo *philo)
+{
+	output_shell(THINKING, philo, DEBUG_MODE);
+}
+
 
 void	*dining(void *data)
 {
