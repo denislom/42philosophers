@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 17:46:07 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:12:21 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ static long	ft_atol(const char *str)
 
 void	parse_arguments(t_table *table, char **argv)
 {
-	table->quantity_philos = ft_atol(argv[1]);
-	printf("table->quantity_philos: %ld\n", table->quantity_philos);
+	table->number_of_philosophers = ft_atol(argv[1]);
+	table->time_to_die = ft_atol(argv[2]);
+	table->time_to_eat = ft_atol(argv[3]);
+	table->time_to_sleep = ft_atol(argv[4]);
+	printf("table->number_of_philosophers: %ld\n", table->number_of_philosophers);
+	printf("table->time_to_die: %ld\n", table->time_to_die);
+	printf("table->time_to_eat: %ld\n", table->time_to_eat);
+	printf("table->time_to_sleep: %ld\n", table->time_to_sleep);
+
 }

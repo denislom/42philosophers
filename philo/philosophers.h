@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 17:41:24 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:13:03 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ struct	s_table
 	long				time_to_eat;
 	long				time_to_sleep;
 	long				nbr_limit_meals;
-	long				quantity_philos;
+	long				number_of_philosophers;
 	long				start_simulation;
 	bool				end_simulation;
 	bool				all_threads_ready;
@@ -114,7 +114,7 @@ struct	s_table
 // void	safe_mutex(t_mtx *mutex, t_opcode opcode);
 // void	*safe_malloc(size_t bytes);
 
-// //parse.c
+// parse.c
 void	parse_arguments(t_table *table, char **argv);
 
 // //init.c
