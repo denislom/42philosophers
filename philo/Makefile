@@ -6,7 +6,7 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2024/01/18 00:41:08 by dlom             ###   ########.fr        #
+#    Updated: 2024/01/18 01:04:28 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRCS =	philosophers.c \
 
 OBJS = $(SRCS:.c=.o)
 
-CC = cc -pthread -g
-#CFLAGS = -Wall -Wextra -Werror -pthread -g
+CC = cc -pthread
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 

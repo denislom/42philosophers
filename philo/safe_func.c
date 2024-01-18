@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:17:37 by dlom              #+#    #+#             */
-/*   Updated: 2023/12/21 00:41:42 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 01:03:46 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,6 @@ void	safe_mutex(t_mtx *mutex, t_opcode opcode)
 		error_exit("Wrong opcode for mutex.");
 }
 
-/* void	safe_mutex(t_mtx *mutex, t_opcode opcode)
-{
-	if (LOCK == opcode)
-		pthread_mutex_lock(mutex);
-	else if (UNLOCK == opcode)
-		pthread_mutex_unlock(mutex);
-	else if (INIT == opcode)
-		pthread_mutex_init(mutex, NULL);
-	else if (DESTROY == opcode)
-		pthread_mutex_destroy(mutex);
-	else
-		error_exit("Wrong opcode for mutex.");
-} */
 static void	handle_thread_error(int status, t_opcode opcode)
 {
 	if (0 == status)
