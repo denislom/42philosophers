@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 18:12:21 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:24:41 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,20 @@ static long	ft_atol(const char *str)
 void	parse_arguments(t_table *table, char **argv)
 {
 	table->number_of_philosophers = ft_atol(argv[1]);
-	table->time_to_die = ft_atol(argv[2]);
-	table->time_to_eat = ft_atol(argv[3]);
-	table->time_to_sleep = ft_atol(argv[4]);
+	table->time_to_die = ft_atol(argv[2]) * 1e3;
+	table->time_to_eat = ft_atol(argv[3]) * 1e3;
+	table->time_to_sleep = ft_atol(argv[4]) * 1e3;
 	printf("table->number_of_philosophers: %ld\n", table->number_of_philosophers);
 	printf("table->time_to_die: %ld\n", table->time_to_die);
 	printf("table->time_to_eat: %ld\n", table->time_to_eat);
 	printf("table->time_to_sleep: %ld\n", table->time_to_sleep);
-
+	if (table->time_to_die < 60000
+		|| table->time_to_eat < 60000
+		|| table->time_to_sleep < 60000)
+		print_error("2nd, 3rd and 4th argument must be > 60.");
+	if (argv[5])
+		table->times_philo_must_eat = ft_atol(argv[5]);
+	else
+		table->times_philo_must_eat = -42;
+	printf("table->times_philo_must_eat %ld\n", table->times_philo_must_eat);
 }

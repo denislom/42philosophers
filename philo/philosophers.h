@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 18:13:03 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:21:59 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ struct	s_table
 	long				time_to_die;
 	long				time_to_eat;
 	long				time_to_sleep;
-	long				nbr_limit_meals;
+	long				times_philo_must_eat;
 	long				number_of_philosophers;
 	long				start_simulation;
 	bool				end_simulation;
