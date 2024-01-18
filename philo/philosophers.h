@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/19 00:17:08 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/19 00:37:58 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	print_error(const char *error);
 // void	output_shell(t_status status, t_philo *philo, bool debug);
 
 // //mon_and_synchro_utils.c
-// void	wait_all_threads(t_table *table);
+void	wait_threads(t_table *table);
 // void	increase_long(t_mtx *mutex, long *value);
 // bool	all_threads_running(t_mtx *mutex, long *threads, long philo_nbr);
 // void    thinking(t_philo *philo, bool pre_simulation);
