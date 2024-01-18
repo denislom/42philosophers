@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 19:36:01 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/19 00:17:08 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ struct	s_table
 	long				times_philo_must_eat;
 	long				start_simulation;
 	bool				simulation_ended;
-	bool				all_threads_ready;
-	long				nbr_running_threads;
+	bool				threads_are_ready;
+	long				q_running_threads;
 	pthread_t			monitor;
 	t_fork				*forks;
 	t_philo				*philos;
@@ -124,11 +124,11 @@ void	initiate_data(t_table *table);
 // void	start_living(t_table *table);
 
 // //setandget.c
-// void	set_bool(t_mtx *mutex, bool *dest, bool value);
-// bool	get_bool(t_mtx *mutex, bool *value);
-// long	get_long(t_mtx *mutex, long *value);
-// void	set_long(t_mtx *mutex, long *dest, long value);
-// bool	simulation_finished(t_table *table);
+void	set_bool(t_mtx *mutex, bool *dest, bool value);
+bool	get_bool(t_mtx *mutex, bool *value);
+long	get_long(t_mtx *mutex, long *value);
+void	set_long(t_mtx *mutex, long *dest, long value);
+bool	simulation_finished(t_table *table);
 
 // //time_utils.c
 // time_t	gettime(int time_code);
