@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 18:21:59 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 19:36:01 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,15 @@ typedef struct s_philo
 
 struct	s_table
 {
+	long				number_of_philosophers;
 	long				time_to_die;
 	long				time_to_eat;
 	long				time_to_sleep;
 	long				times_philo_must_eat;
-	long				number_of_philosophers;
 	long				start_simulation;
-	bool				end_simulation;
+	bool				simulation_ended;
 	bool				all_threads_ready;
-	long				threads_running_nbr;
+	long				nbr_running_threads;
 	pthread_t			monitor;
 	t_fork				*forks;
 	t_philo				*philos;
@@ -109,16 +109,16 @@ struct	s_table
 //function prototypes
 
 // //safe_func.
-// void	safe_thread(pthread_t *thread, void *(*foo)(void *),
-// 			void *data, t_opcode opcode);
-// void	safe_mutex(t_mtx *mutex, t_opcode opcode);
-// void	*safe_malloc(size_t bytes);
+void	safe_mutex(t_mtx *mutex, t_opcode opcode);
+void	safe_thread(pthread_t *thread, void *(*foo)(void *),
+			void *data, t_opcode opcode);
+void	*safe_malloc(size_t bytes);
 
 // parse.c
 void	parse_arguments(t_table *table, char **argv);
 
 // //init.c
-// void	data_init(t_table *table);
+void	initiate_data(t_table *table);
 
 // //dine.c
 // void	start_living(t_table *table);

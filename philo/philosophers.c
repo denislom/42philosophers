@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 17:42:33 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/18 18:34:43 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if (argc == 5 || argc == 6)
 	{
 		parse_arguments(&table, argv);
-		// initiate_data(&table);
+		initiate_data(&table);
 		// start_dinner(&table);
 		// free_data(&table);
 	}
