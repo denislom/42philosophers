@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 20:20:40 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/19 00:13:12 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	initiate_data(t_table *table)
 
 	i = -1;
 	table->simulation_ended = false;
+	table->threads_are_ready = false;
 	table->philos = safe_malloc(table->number_of_philosophers * sizeof(t_philo));
 	table->forks = safe_malloc(table->number_of_philosophers * sizeof(t_fork));
+	safe_mutex(&table->table_mutex, INIT);
 	while (++i < table->number_of_philosophers)
 	{
 		safe_mutex(&table->forks[i].fork, INIT);

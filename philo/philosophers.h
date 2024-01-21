@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/19 00:37:58 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/21 23:46:48 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,20 @@
 # include <pthread.h>	//mutex: init-destroy-lock-unlock,
 						//threads: create-join-detach
 # include <stdbool.h>
-# include <stdint.h>	
-# include <sys/wait.h>
-# include <errno.h>
+# include <stdint.h>
+
 # include <string.h>
 # include <limits.h>	//INT_MAX
+# include <errno.h>
 
-# ifndef DEBUG_MODE
-#  define DEBUG_MODE 0
-# endif
 
-# ifndef PHILO_MAX
-#  define PHILO_MAX 200 
-# endif
+// # ifndef DEBUG_MODE
+// #  define DEBUG_MODE 0
+// # endif
+
+// # ifndef PHILO_MAX
+// #  define PHILO_MAX 200 
+// # endif
 
 // enums
 
@@ -48,8 +49,8 @@ typedef enum e_status
 
 typedef enum e_time
 {
-	SECONDS,
-	MILLISECOND,
+	SECOND,
+	MILISECOND,
 	MICROSECOND,
 }		t_time;
 
@@ -121,7 +122,7 @@ void	parse_arguments(t_table *table, char **argv);
 void	initiate_data(t_table *table);
 
 // //dine.c
-// void	start_living(t_table *table);
+void	start_dinner(t_table *table);
 
 // //setandget.c
 void	set_bool(t_mtx *mutex, bool *dest, bool value);
@@ -131,15 +132,15 @@ void	set_long(t_mtx *mutex, long *dest, long value);
 bool	simulation_finished(t_table *table);
 
 // //time_utils.c
-// time_t	gettime(int time_code);
-// void	precise_usleep(long usec, t_table *table);
+long	gettime(t_time time);
+void	my_usleep(long usec, t_table *table);
 // void	clean(t_table *table);
 
 // //error_handling.c
 void	print_error(const char *error);
 
 // //output.c
-// void	output_shell(t_status status, t_philo *philo, bool debug);
+void	output_shell(t_status status, t_philo *philo);
 
 // //mon_and_synchro_utils.c
 void	wait_threads(t_table *table);
