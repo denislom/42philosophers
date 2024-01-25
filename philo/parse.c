@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:18:25 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 18:24:41 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/25 00:56:15 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ static const char	*valid_input(const char *str)
 	while (is_digit(*str++))
 		++len;
 	if (len > 10)
-		print_error("INT_MAX is the limit");
+		print_error("INT_MAX is the limit.");
 	return (number);
 }
-
 
 static long	ft_atol(const char *str)
 {
@@ -58,23 +57,24 @@ static long	ft_atol(const char *str)
 	return (number);
 }
 
-void	parse_arguments(t_table *table, char **argv)
+void	parse_arguments(t_table *table, char **av)
 {
-	table->number_of_philosophers = ft_atol(argv[1]);
-	table->time_to_die = ft_atol(argv[2]) * 1e3;
-	table->time_to_eat = ft_atol(argv[3]) * 1e3;
-	table->time_to_sleep = ft_atol(argv[4]) * 1e3;
-	printf("table->number_of_philosophers: %ld\n", table->number_of_philosophers);
-	printf("table->time_to_die: %ld\n", table->time_to_die);
-	printf("table->time_to_eat: %ld\n", table->time_to_eat);
-	printf("table->time_to_sleep: %ld\n", table->time_to_sleep);
-	if (table->time_to_die < 60000
-		|| table->time_to_eat < 60000
-		|| table->time_to_sleep < 60000)
+	table->number_of_philosophers = ft_atol(av[1]);
+	if (table->number_of_philosophers > PHILO_MAX)
+	{
+		printf("%d is the max of philosophers, change this parameter.\n",
+			PHILO_MAX);
+		exit(EXIT_FAILURE);
+	}
+	table->time_to_die = ft_atol(av[2]) * 1e3;
+	table->time_to_eat = ft_atol(av[3]) * 1e3;
+	table->time_to_sleep = ft_atol(av[4]) * 1e3;
+	if (table->time_to_die < 6e4
+		|| table->time_to_sleep < 6e4
+		|| table->time_to_eat < 6e4)
 		print_error("2nd, 3rd and 4th argument must be > 60.");
-	if (argv[5])
-		table->times_philo_must_eat = ft_atol(argv[5]);
+	if (av[5])
+		table->times_philo_must_eat = ft_atol(av[5]);
 	else
-		table->times_philo_must_eat = -42;
-	printf("table->times_philo_must_eat %ld\n", table->times_philo_must_eat);
+		table->times_philo_must_eat = -1;
 }

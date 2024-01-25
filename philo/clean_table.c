@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   clean_table.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 01:04:19 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/25 00:49:19 by dlom             ###   ########.fr       */
+/*   Created: 2024/01/23 20:27:46 by dlom              #+#    #+#             */
+/*   Updated: 2024/01/24 23:23:05 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	print_error(const char *error)
+void	clean(t_table *table)
 {
-	printf("%s\n", error);
-	exit(EXIT_FAILURE);
+	t_philo	*philo;
+	int		i;
+
+	i = -1;
+	while (++i < table->number_of_philosophers)
+	{
+		philo = table->philos + i;
+		safe_mutex(&philo->mutex_philo, DESTROY);
+	}
+	safe_mutex(&table->write_mutex, DESTROY);
+	safe_mutex(&table->table_mutex, DESTROY);
+	free(table->forks);
+	free(table->philos);
 }

@@ -6,7 +6,7 @@
 #    By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 16:44:23 by dlom              #+#    #+#              #
-#    Updated: 2024/01/21 23:42:23 by dlom             ###   ########.fr        #
+#    Updated: 2024/01/23 23:50:45 by dlom             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS =	philosophers.c \
 		mon_and_synchro_utils.c \
 		time_utils.c \
 		output.c \
+		death.c \
+		clean_table.c \
 
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/18 23:29:30 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/25 01:00:03 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,20 @@ https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2
 		[number_of_times_each_philosopher_must_eat]
 */
 
-int	main(int argc, char **argv)
+int	main(int ac, char **argv)
 {
 	t_table	table;
 
-	if (argc == 5 || argc == 6)
+	if (5 == ac || 6 == ac)
 	{
 		parse_arguments(&table, argv);
 		initiate_data(&table);
 		start_dinner(&table);
-		// free_data(&table);
+		clean(&table);
 	}
 	else
 	{
-		print_error("Wrong input.\nCorrect is ./philo 5 700 200 200 [5]\n");
+		print_error("Wrong input.\n"
+		"Right input is: ./philo 5 300 150 150 [4]");
 	}
 }

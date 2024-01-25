@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:17:37 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/21 23:46:06 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:28:57 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,25 @@
 
 void	*safe_malloc(size_t bytes)
 {
-	void	*result;
+	void	*ret;
 
-	result = malloc(bytes);
-	if (NULL == result)
-		print_error("Malloc error. :(");
-	return (result);
+	ret = malloc(bytes);
+	if (NULL == ret)
+		print_error("Error with the malloc");
+	return (ret);
 }
 
-static void	handle_mutex(int status, t_opcode opcode)
+/*
+ *   HANDLING ERRORS
+ *   If successful, all the mutex and thread functions 
+ *   will return zero, otherwise an error number will
+ *   be returned to indicate the error.
+ *
+ *💡 Basically i am recreating perror 💡
+ *	 1) These functions don't set errno
+ *	 2) We just cannot use perror
+*/
+static void	handle_mutex_error(int status, t_opcode opcode)
 {
 	if (0 == status)
 		return ;
@@ -45,7 +55,7 @@ static void	handle_mutex(int status, t_opcode opcode)
 /*
  * THREADS errors
 */
-static void	handle_thread(int status, t_opcode opcode)
+static void	handle_thread_error(int status, t_opcode opcode)
 {
 	if (0 == status)
 		return ;
@@ -59,36 +69,45 @@ static void	handle_thread(int status, t_opcode opcode)
 		print_error("The value specified by thread is not joinable\n");
 	else if (ESRCH == status)
 		print_error("No thread could be found corresponding to that"
-			" specified by the given thread ID, thread.");
+			"specified by the given thread ID, thread.");
 	else if (EDEADLK == status)
 		print_error("A deadlock was detected or the value of"
-			" thread specifies the calling thread.");
+			"thread specifies the calling thread.");
 }
 
+/*
+ * One function to handle safely
+ * lock unlock init destroy
+*/
 void	safe_mutex(t_mtx *mutex, t_opcode opcode)
 {
 	if (LOCK == opcode)
-		handle_mutex(pthread_mutex_lock(mutex), opcode);
+		handle_mutex_error(pthread_mutex_lock(mutex), opcode);
 	else if (UNLOCK == opcode)
-		handle_mutex(pthread_mutex_unlock(mutex), opcode);
+		handle_mutex_error(pthread_mutex_unlock(mutex), opcode);
 	else if (INIT == opcode)
-		handle_mutex(pthread_mutex_init(mutex, NULL), opcode);
+		handle_mutex_error(pthread_mutex_init(mutex, NULL), opcode);
 	else if (DESTROY == opcode)
-		handle_mutex(pthread_mutex_destroy(mutex), opcode);
+		handle_mutex_error(pthread_mutex_destroy(mutex), opcode);
 	else
-		print_error("Wrong opcode: use <CREATE> <JOIN> <DETACH>");
+		print_error("Wrong opcode for mutex_handle:"
+			"use <LOCK> <UNLOCK> <INIT> <DESTROY>");
 }
 
-
+/*
+ * One function to handle threads
+ * create join detach
+*/
 void	safe_thread(pthread_t *thread, void *(*foo)(void *),
 		void *data, t_opcode opcode)
 {
 	if (CREATE == opcode)
-		handle_thread(pthread_create(thread, NULL, foo, data), opcode);
+		handle_thread_error(pthread_create(thread, NULL, foo, data), opcode);
 	else if (JOIN == opcode)
-		handle_thread(pthread_join(*thread, NULL), opcode);
+		handle_thread_error(pthread_join(*thread, NULL), opcode);
 	else if (DETACH == opcode)
-		handle_thread(pthread_detach(*thread), opcode);
+		handle_thread_error(pthread_detach(*thread), opcode);
 	else
-		print_error("Wrong opcode: use <CREATE> <JOIN> <DETACH>");
+		print_error("Wrong opcode for thread_handle:"
+			" use <CREATE> <JOIN> <DETACH>");
 }

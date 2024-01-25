@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 00:14:52 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/21 23:47:32 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:29:17 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	set_bool(t_mtx	*mutex, bool *dest, bool value)
 
 bool	get_bool(t_mtx *mutex, bool *value)
 {
-	bool	result;
+	bool	ret;
 
 	safe_mutex(mutex, LOCK);
-	result = *value;
+	ret = *value;
 	safe_mutex(mutex, UNLOCK);
-	return (result);
+	return (ret);
 }
 
 long	get_long(t_mtx *mutex, long *value)
 {
-	long	result;
+	long	ret;
 
 	safe_mutex(mutex, LOCK);
-	result = *value;
+	ret = *value;
 	safe_mutex(mutex, UNLOCK);
-	return (result);
+	return (ret);
 }
 
 void	set_long(t_mtx *mutex, long *dest, long value)

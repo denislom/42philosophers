@@ -6,27 +6,27 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:20:35 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/21 23:15:45 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:32:56 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long	gettime(t_time time)
+long	gettime(int time_code)
 {
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL))
-		print_error("C function gettimeofday failed");
-	if (MILISECOND == time)
+		print_error("Function gettimeofday failed");
+	if (MILISECONDS == time_code)
 		return (tv.tv_sec * 1e3 + tv.tv_usec / 1e3);
-	else if (MICROSECOND == time)
+	else if (MICROSECONDS == time_code)
 		return (tv.tv_sec * 1e6 + tv.tv_usec);
-	else if (SECOND == time)
+	else if (SECONDS == time_code)
 		return (tv.tv_sec + tv.tv_usec / 1e6);
 	else
-		print_error("Wrong input to gettime:"
-			"use <MILLISECOND> <MICROSECOND> <SECONDS>");
+		print_error("Wrong input to the function gettime:"
+			"use <MILISECONDS> <MICROSECONDS> <SECONDS>");
 	return (42);
 }
 
@@ -36,17 +36,17 @@ void	my_usleep(long usec, t_table *table)
 	long	passed;
 	long	remain;
 
-	start = gettime(MICROSECOND);
-	while (gettime(MICROSECOND) - start < usec)
+	start = gettime(MICROSECONDS);
+	while (gettime(MICROSECONDS) - start < usec)
 	{
 		if (simulation_finished(table))
 			break ;
-		passed = gettime(MICROSECOND) - start;
+		passed = gettime(MICROSECONDS) - start;
 		remain = usec - passed;
 		if (remain > 1e3)
 			usleep(remain / 2);
 		else
-			while (gettime(MICROSECOND) - start < usec)
+			while (gettime(MICROSECONDS) - start < usec)
 				;
 	}
 }

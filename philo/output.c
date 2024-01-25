@@ -6,17 +6,17 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 22:40:21 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/21 23:27:13 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:27:31 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	output_shell(t_status status, t_philo *philo)
+void	output_shell(t_philo_status status, t_philo *philo)
 {
 	long	passed;
 
-	passed = gettime(MILISECOND) - philo->table->start_simulation;
+	passed = gettime(MILISECONDS) - philo->table->start_simulation;
 	if (get_bool(&philo->mutex_philo, &philo->full))
 		return ;
 	safe_mutex(&philo->table->write_mutex, LOCK);

@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/19 00:13:12 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:25:59 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void	appoint_forks(t_philo *philo, t_fork *forks,
 	}	
 }
 
-
-static void	initiate_philos(t_table *table)
+static void	philo_init(t_table *table)
 {
 	int		i;
 	t_philo	*philo;
@@ -43,24 +42,26 @@ static void	initiate_philos(t_table *table)
 		safe_mutex(&philo->mutex_philo, INIT);
 		philo->table = table;
 		appoint_forks(philo, table->forks, i);
-		printf("philo %d created with appointed forks %d and %d\n", philo->id, philo->first_fork->fork_id, philo->second_fork->fork_id);
 	}
 }
 
 void	initiate_data(t_table *table)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	table->simulation_ended = false;
 	table->threads_are_ready = false;
+	table->q_running_threads = 0;
 	table->philos = safe_malloc(table->number_of_philosophers * sizeof(t_philo));
 	table->forks = safe_malloc(table->number_of_philosophers * sizeof(t_fork));
+	safe_mutex(&table->write_mutex, INIT);
 	safe_mutex(&table->table_mutex, INIT);
 	while (++i < table->number_of_philosophers)
 	{
 		safe_mutex(&table->forks[i].fork, INIT);
 		table->forks[i].fork_id = i;
 	}
-	initiate_philos(table);
+	philo_init(table);
 }
+
