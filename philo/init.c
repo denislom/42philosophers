@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:55:12 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/24 23:25:59 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/26 00:27:19 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	initiate_data(t_table *table)
 	table->simulation_ended = false;
 	table->threads_are_ready = false;
 	table->q_running_threads = 0;
-	table->philos = safe_malloc(table->number_of_philosophers * sizeof(t_philo));
+	table->philos = safe_malloc(table->number_of_philosophers
+			* sizeof(t_philo));
 	table->forks = safe_malloc(table->number_of_philosophers * sizeof(t_fork));
 	safe_mutex(&table->write_mutex, INIT);
 	safe_mutex(&table->table_mutex, INIT);
@@ -64,4 +65,3 @@ void	initiate_data(t_table *table)
 	}
 	philo_init(table);
 }
-

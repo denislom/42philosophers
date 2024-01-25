@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:17 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/24 23:21:52 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/26 00:28:34 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef enum e_time_code
 	MILISECONDS,
 	MICROSECONDS,
 }		t_time_code;
-
 
 typedef enum e_opcode
 {

@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 23:36:45 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/24 23:23:02 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/25 21:02:59 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	*monitor_dinner(void *data)
 
 	table = (t_table *)data;
 	while (!all_threads_running(&table->table_mutex,
-			&table->q_running_threads, table->number_of_philosophers))
-		;
+			&table->q_running_threads, table->number_of_philosophers));
 	while (!simulation_finished(table))
-	{	
+	{
 		i = -1;
-		while (++i < table->number_of_philosophers && !simulation_finished(table))
+		while (++i < table->number_of_philosophers
+			&& !simulation_finished(table))
 		{
 			if (philo_died(table->philos + i))
 			{

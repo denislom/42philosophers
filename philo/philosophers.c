@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 22:47:25 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/25 01:00:03 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/26 00:28:16 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	main(int ac, char **argv)
 	else
 	{
 		print_error("Wrong input.\n"
-		"Right input is: ./philo 5 300 150 150 [4]");
+			"Right input is: ./philo 5 300 150 150 [4]");
 	}
 }
