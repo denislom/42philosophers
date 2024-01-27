@@ -6,7 +6,7 @@
 /*   By: dlom <dlom@student.42prague.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:17:37 by dlom              #+#    #+#             */
-/*   Updated: 2024/01/24 23:28:57 by dlom             ###   ########.fr       */
+/*   Updated: 2024/01/27 11:51:46 by dlom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ void	*safe_malloc(size_t bytes)
 	return (ret);
 }
 
-/*
- *   HANDLING ERRORS
- *   If successful, all the mutex and thread functions 
- *   will return zero, otherwise an error number will
- *   be returned to indicate the error.
- *
- *💡 Basically i am recreating perror 💡
- *	 1) These functions don't set errno
- *	 2) We just cannot use perror
-*/
 static void	handle_mutex_error(int status, t_opcode opcode)
 {
 	if (0 == status)
@@ -52,9 +42,6 @@ static void	handle_mutex_error(int status, t_opcode opcode)
 		print_error("Mutex is locked");
 }
 
-/*
- * THREADS errors
-*/
 static void	handle_thread_error(int status, t_opcode opcode)
 {
 	if (0 == status)
@@ -75,10 +62,6 @@ static void	handle_thread_error(int status, t_opcode opcode)
 			"thread specifies the calling thread.");
 }
 
-/*
- * One function to handle safely
- * lock unlock init destroy
-*/
 void	safe_mutex(t_mtx *mutex, t_opcode opcode)
 {
 	if (LOCK == opcode)
@@ -94,10 +77,6 @@ void	safe_mutex(t_mtx *mutex, t_opcode opcode)
 			"use <LOCK> <UNLOCK> <INIT> <DESTROY>");
 }
 
-/*
- * One function to handle threads
- * create join detach
-*/
 void	safe_thread(pthread_t *thread, void *(*foo)(void *),
 		void *data, t_opcode opcode)
 {
